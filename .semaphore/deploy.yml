@@ -1,0 +1,26 @@
+version: v1.0
+name: Finance API - Release Pipeline
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu2004
+
+blocks:
+  - name: "Release Stage: Build da imagem Docker e Deploy"
+    task:
+      secrets:
+        - name: dockerhub-credentials
+        - name: render-deploy-hook
+      jobs:
+        - name: Build, push e deploy
+          commands:
+            - checkout
+            - echo "Realizando login no Docker Hub"
+            - echo "$DOCKERHUB_TOKEN" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
+            - echo "Buildando a imagem Docker"
+            - docker build -t "$DOCKERHUB_USERNAME/finance-api:latest" -t "$DOCKERHUB_USERNAME/finance-api:$SEMAPHORE_GIT_SHA" .
+            - echo "Enviando imagem para o Docker Hub"
+            - docker push "$DOCKERHUB_USERNAME/finance-api:latest"
+            - docker push "$DOCKERHUB_USERNAME/finance-api:$SEMAPHORE_GIT_SHA"
+            - echo "Disparando deploy no Render"
+            - curl -X POST "$RENDER_DEPLOY_HOOK_URL"
