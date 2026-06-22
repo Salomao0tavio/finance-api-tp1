@@ -2,8 +2,8 @@ version: v1.0
 name: Finance API - CI Pipeline
 agent:
   machine:
-    type: e1-standard-2
-    os_image: ubuntu2004
+    type: e2-standard-2
+    os_image: ubuntu2204
 
 # Dispara em todo push, conforme exigido pelo TP.
 # O deploy (release stage) só é promovido automaticamente quando o push é na main.
