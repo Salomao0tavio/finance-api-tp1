@@ -113,3 +113,5 @@ na branch `main` e as etapas anteriores passam:
 | POST | `/transactions/` | Registrar transação |
 | GET | `/transactions/report/{account_id}` | Relatório por categoria |
 | GET | `/health` | Healthcheck |
+
+<!-- Pipeline Trigger -->
