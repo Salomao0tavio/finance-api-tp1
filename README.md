@@ -114,4 +114,3 @@ na branch `main` e as etapas anteriores passam:
 | GET | `/transactions/report/{account_id}` | Relatório por categoria |
 | GET | `/health` | Healthcheck |
 
-<!-- Pipeline Trigger -->
