@@ -1,4 +1,5 @@
-# Finance API
+# Finance API.
+edit
 
 API de Controle de Gastos Pessoais, desenvolvida para o Trabalho Prático 1 da
 disciplina de Gerência de Configuração e Evolução de Software (PUC Minas).
